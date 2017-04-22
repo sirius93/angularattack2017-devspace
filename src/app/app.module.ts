@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import {MaterialModule} from '@angular/material';
 import { AppComponent } from './app.component';
 import { ComponentsModule } from './components/components.modules';
+import { AmpDashModule } from 'amp-dash';
 @NgModule({
   declarations: [
     AppComponent
@@ -14,7 +15,8 @@ import { ComponentsModule } from './components/components.modules';
     BrowserModule,
     FormsModule,
     HttpModule,
-    MaterialModule
+    MaterialModule,
+    AmpDashModule
   ],
   providers: [],
   bootstrap: [AppComponent]

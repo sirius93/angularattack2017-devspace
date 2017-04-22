@@ -1,0 +1,20 @@
+<div class="container-fluid custom-block">
+  <div class="row">
+    <div class="col-xs-12 toolbar">
+      <md-toolbar color="primary">
+        <div class="logo"><
+          <amp-dash [typeText]="'DEV SPACE'" [typeLoop]="true" class="app-title"></amp-dash>>
+        </div>
+        <md-input-container class="search-container">
+          <input mdInput placeholder="Search APIs" [formControl]="stateCtrl" [mdAutocomplete]="auto" class="search-input" >
+        </md-input-container>
+
+        <md-autocomplete #auto="mdAutocomplete">
+          <md-option *ngFor="let state of filteredStates | async" [value]="state">
+            {{ state }}
+          </md-option>
+        </md-autocomplete>
+      </md-toolbar>
+    </div>
+  </div>
+</div>
