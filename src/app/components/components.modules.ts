@@ -3,10 +3,11 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {MaterialModule} from '@angular/material';
+import {landingPageComponent} from './landing page/landing-page.component'
 
 @NgModule({
   declarations: [
-    
+    landingPageComponent
   ],
   imports: [
     BrowserModule,
@@ -14,6 +15,7 @@ import {MaterialModule} from '@angular/material';
     HttpModule,
     MaterialModule
   ],
+  exports:[landingPageComponent],
   providers: [],
   bootstrap: []
 })
