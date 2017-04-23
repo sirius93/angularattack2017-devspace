@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Router} from '@angular/router';
 // import {MdButtonModule} from '@angular/material';
 
 @Component({
@@ -7,4 +8,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./landing-page.component.scss']
 })
 export class landingPageComponent { 
+
+constructor(private router:Router){
+
+}
+
+nav(){
+  this.router.navigate(['/homepage']);
+}
+
 }

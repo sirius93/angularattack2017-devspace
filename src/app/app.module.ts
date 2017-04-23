@@ -6,6 +6,9 @@ import {MaterialModule} from '@angular/material';
 import { AppComponent } from './app.component';
 import { ComponentsModule } from './components/components.modules';
 import { AmpDashModule } from 'amp-dash';
+import {RouterModule} from '@angular/router';
+import { landingPageComponent } from './components/landing page/landing-page.component';
+import { HomepageComponent } from './components/homepage/homepage.component';
 @NgModule({
   declarations: [
     AppComponent
@@ -16,7 +19,22 @@ import { AmpDashModule } from 'amp-dash';
     FormsModule,
     HttpModule,
     MaterialModule,
-    AmpDashModule
+    AmpDashModule,
+    RouterModule.forRoot([
+      {
+        path: 'homepage',
+        component: HomepageComponent
+      },
+      {
+        path: 'landingpage',
+        component: landingPageComponent
+      },
+      {
+        path: '',
+        redirectTo: '/landingpage',
+        pathMatch: 'full'
+      }
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]

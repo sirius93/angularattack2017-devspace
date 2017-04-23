@@ -1,17 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import {MaterialModule} from '@angular/material';
-import {landingPageComponent} from './landing page/landing-page.component';
+import { MaterialModule } from '@angular/material';
+import { landingPageComponent } from './landing page/landing-page.component';
 import { HomepageComponent } from './homepage/homepage.component';
-import {RouterModule} from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { AmpDashModule } from 'amp-dash';
 
 @NgModule({
   declarations: [
-      landingPageComponent,
-      HomepageComponent
+    landingPageComponent,
+    HomepageComponent
   ],
   imports: [
     BrowserModule,
@@ -19,9 +19,11 @@ import { AmpDashModule } from 'amp-dash';
     ReactiveFormsModule,
     HttpModule,
     MaterialModule,
-    AmpDashModule
+    AmpDashModule,
+    
   ],
-  exports:[landingPageComponent,HomepageComponent],
+
+  exports: [landingPageComponent, HomepageComponent],
   providers: [],
   bootstrap: []
 })
