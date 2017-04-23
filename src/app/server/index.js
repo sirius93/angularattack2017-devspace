@@ -78,10 +78,11 @@ app.get('/auth/google/callback', function (req, res, next) {
             });
         }
         if (token) {
+            console.log(token)
             res.cookie('user_token', token, {
                 maxAge: 9600000
             });
-            return res.redirect('http://localhost:4200/api-form');
+            return res.redirect('http://localhost:4200/homepage');
         }
     });
 
