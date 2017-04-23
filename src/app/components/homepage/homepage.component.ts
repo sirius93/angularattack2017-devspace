@@ -13,69 +13,24 @@ import 'rxjs/add/operator/startWith';
   
 })
 export class HomepageComponent {
-  // apis:api[];  
+  apis:api[];
+  allapis:any;
   stateCtrl: FormControl;
   filteredApis: any;
  selectedOption:any;
-  apis = [
-    'Alabama',
-    'Alaska',
-    'Arizona',
-    'Arkansas',
-    'California',
-    'Colorado',
-    'Connecticut',
-    'Delaware',
-    'Florida',
-    'Georgia',
-    'Hawaii',
-    'Idaho',
-    'Illinois',
-    'Indiana',
-    'Iowa',
-    'Kansas',
-    'Kentucky',
-    'Louisiana',
-    'Maine',
-    'Maryland',
-    'Massachusetts',
-    'Michigan',
-    'Minnesota',
-    'Mississippi',
-    'Missouri',
-    'Montana',
-    'Nebraska',
-    'Nevada',
-    'New Hampshire',
-    'New Jersey',
-    'New Mexico',
-    'New York',
-    'North Carolina',
-    'North Dakota',
-    'Ohio',
-    'Oklahoma',
-    'Oregon',
-    'Pennsylvania',
-    'Rhode Island',
-    'South Carolina',
-    'South Dakota',
-    'Tennessee',
-    'Texas',
-    'Utah',
-    'Vermont',
-    'Virginia',
-    'Washington',
-    'West Virginia',
-    'Wisconsin',
-    'Wyoming',
-  ];
+  apiList = [];
 
   constructor(public dialog: MdDialog,private apiDetails:apiService) {
     this.stateCtrl = new FormControl();
     this.filteredApis = this.stateCtrl.valueChanges
         .startWith(null)
-        .map(name => this.filterStates(name));
-    this.apiDetails.getApiList().subscribe(apis => this.apis=apis)
+        .map(name => this.filterApis(name));
+    this.apiDetails.getApiList().subscribe(apis => this.apis=apis);
+     this.apiDetails.getAllApis().subscribe(apis => {this.allapis=apis;
+        
+       this.apiList.push(apis[0].Category);
+       
+       console.log(apis[0])});
   }
 
   openDialog(api) {
@@ -86,9 +41,9 @@ export class HomepageComponent {
     });
   }
 
-  filterStates(val: string) {
-    return val ? this.apis.filter(s => new RegExp(`^${val}`, 'gi').test(s))
-               : this.apis;
+  filterApis(val: string) {
+    return val ? this.apiList.filter(s => new RegExp(`^${val}`, 'gi').test(s))
+               : this.apiList;
   }
 }
 interface api{

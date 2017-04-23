@@ -10,10 +10,15 @@ export class apiService {
         // this.api=2; 
     }
     ngOnInit(){
-        this.api=2; 
+      
     }
+
+    getAllApis(){
+return this.http.get('https://api.myjson.com/bins/7l3qj').map(res=>res.json())
+    }
+
     getApiList(){
-        return this.http.get('https://api.myjson.com/bins/9slmb').map(res=>res.json())
+        return this.http.get('https://api.myjson.com/bins/cpn97').map(res=>res.json())
     }
     setApiDetails(api:Object){
         this.api=api;
