@@ -43,11 +43,12 @@ return this.http.get('https://api.myjson.com/bins/7l3qj').map(res=>res.json())
     }
     setApiDetails(api:Object){
         this.api=api;
-        console.log(this.api);
+        // console.log(this.api);
     }
-    getApiDetails():Promise<any>{
-        console.log(this.api);
-        return Promise.resolve(this.api);
+
+    getApiDetails(){
+        // console.log(this.api);
+        return this.api;
     }
     getUserDetails():Promise<any>{
         console.log(this.user)

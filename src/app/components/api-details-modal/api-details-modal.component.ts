@@ -6,17 +6,17 @@
   selector: 'api-details',
   templateUrl: './api-details-modal.component.html',
   styleUrls: ['./api-details-modal.component.scss'],
-//   providers: [apiService]
+  providers: [apiService]
 })
 export class apiDetailsComponent { 
-    apiService:any;
-    constructor()
+    // apiService:any; 
+    api:Object;
+    constructor(public apiDetails:apiService)
     {
-        
-
     }
     ngOnInit()
     {
-        this.apiService.getApiDetails().then(heroes=>console.log(heroes));
+       this.api= this.apiDetails.getApiDetails();
+        console.log(this.api);
     }
 }
