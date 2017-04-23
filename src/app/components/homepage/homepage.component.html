@@ -17,4 +17,9 @@
       </md-toolbar>
     </div>
   </div>
+  <div class="row">
+    <ul class="api-list">
+      <li *ngFor="let api of apis;let i =index" (click)="openDialog(api)">{{api.API}}</li>
+    </ul>
+  </div>
 </div>
