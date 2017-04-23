@@ -18,8 +18,37 @@
 }
 .toolbar{
     padding:0;
-    box-shadow: 0 8px 8px -6px black
+    box-shadow: 0 8px 15px -6px green;
 }
 .api-list{
+    height:600px;
     list-style-type: none;
+}
+.table-rows{
+    opacity:0.9;
+    color:white;
+    height: 70px;
+}
+.table-rows:nth-child(2n){
+    background-color: #2a313d;
+
+}
+.table-rows:nth-child(2n+1){
+    background-color: #121419;
+}
+td{
+    text-align: center;
+}
+.table-heading{
+    opacity:0.9;
+    color:white;
+    height: 70px;
+    background-color: black;
+}
+md-toolbar{
+    position: fixed;
+    z-index:2;
+}
+.main-content{
+    margin-top:50px;
 }

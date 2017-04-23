@@ -1,4 +1,5 @@
-[{
+[
+{
 "id":1,
 "API":"Google Analytics API",
 "Description":"Lets Android application developers access their Google Play accounts",
@@ -23,6 +24,6 @@
 "tags":["Google","calendar"],
 "pros":"highly useful",
 "cons":"more complex",
-"avg-rating":3.5
+"avg-rating":3
 }
 ]
