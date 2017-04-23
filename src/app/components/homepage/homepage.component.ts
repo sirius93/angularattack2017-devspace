@@ -1,9 +1,15 @@
-import { Component, OnInit } from '@angular/core';
 import {FormControl,ReactiveFormsModule} from '@angular/forms';
 import {apiDetailsComponent} from '../api-details-modal/api-details-modal.component'
 import {apiService} from '../../services/api-services/api.service'
 import {MdDialog, MdDialogRef} from '@angular/material';
 import 'rxjs/add/operator/startWith';
+import { GetUserDataService } from '../../services/user-data/user-data.service';
+import { _document } from '@angular/platform-browser/src/browser';
+import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
+import { Http } from '@angular/http';
+import { RouterModule, Routes, Router, ActivatedRoute } from '@angular/router';
+import { Subscriber } from 'rxjs';
+// import 'rxjs/add/operator/subscribe';
 
 @Component({
   selector: 'app-homepage',
@@ -47,7 +53,7 @@ export class HomepageComponent {
     "Travel"
 ];
 
-  constructor(public dialog: MdDialog,private apiDetails:apiService) {
+  constructor(public dialog: MdDialog,private apiDetails:apiService,private getUserDataService: GetUserDataService  ) {
     this.stateCtrl = new FormControl();
     this.filteredApis = this.stateCtrl.valueChanges
         .startWith(null)
@@ -56,6 +62,14 @@ export class HomepageComponent {
      this.apiDetails.getAllApis().subscribe(apis => {this.allapis=apis;
   });
   }
+
+ userDetails={}
+    // this.data=this.getUserDataService.getUserDetails()
+    // console.log(this.data);
+    ngOnInit(){
+      this.getUserDataService.getUserDetails().subscribe(data=>this.userDetails=data)
+      console.log(this.userDetails+"ho")
+    }
 
   openDialog(api) {
     let dialogRef = this.dialog.open(apiDetailsComponent);
@@ -96,3 +110,4 @@ interface api{
   Description:string,
   tags:string[]
 }
+

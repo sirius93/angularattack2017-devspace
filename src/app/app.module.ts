@@ -4,11 +4,13 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {MaterialModule} from '@angular/material';
 import { AppComponent } from './app.component';
-import { ComponentsModule } from './components/components.modules';
 import { AmpDashModule } from 'amp-dash';
 import {RouterModule} from '@angular/router';
 import { landingPageComponent } from './components/landing page/landing-page.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
+import { ComponentsModule } from './components/components.module';
+import { GetUserDataService } from './services/user-data/user-data.service';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -36,7 +38,7 @@ import { HomepageComponent } from './components/homepage/homepage.component';
       }
     ])
   ],
-  providers: [],
+  providers: [GetUserDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
