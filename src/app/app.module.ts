@@ -4,7 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {MaterialModule} from '@angular/material';
 import { AppComponent } from './app.component';
-import { ComponentsModule } from './components/components.modules';
+import { ComponentsModule } from './components/components.module';
+import { GetUserDataService } from './services/user-data/user-data.service';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -16,7 +18,7 @@ import { ComponentsModule } from './components/components.modules';
     HttpModule,
     MaterialModule
   ],
-  providers: [],
+  providers: [GetUserDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
