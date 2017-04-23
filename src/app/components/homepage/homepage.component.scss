@@ -1,24 +1,23 @@
-.custom-block{
-    // padding:0;
-}
 .search-container{
     margin:15px 0 0 30px;
     width:40%;
-}
+
 .search-input{
     background-color: white;
      opacity:0.5;
     color:black;
     height:40px;
+     }
 }
-.logo{
+
+.toolbar{
+    padding:0;
+    
+    .logo{
     width:150px;
     color:white;
     font-family: 'Coda', cursive;
 }
-.toolbar{
-    padding:0;
-    box-shadow: 0 8px 15px -6px green;
 }
 .api-list{
     height:600px;
@@ -38,6 +37,7 @@
 }
 td{
     text-align: center;
+    padding:10px;
 }
 .table-heading{
     opacity:0.9;
@@ -51,4 +51,12 @@ md-toolbar{
 }
 .main-content{
     margin-top:50px;
+}
+table,td,tr{
+    border:1px solid #20213d;
+    // opacity:0.9;
+}
+
+.hide{
+display:none;
 }

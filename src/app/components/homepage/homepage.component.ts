@@ -17,8 +17,35 @@ export class HomepageComponent {
   allapis:any;
   stateCtrl: FormControl;
   filteredApis: any;
+  displayFlag:boolean;
  selectedOption:any;
-  apiList = [];
+  apiList = [
+    "Mapping",
+    "Social",
+    "Video",
+    "Photos",
+    "eCommerce",
+    "Telephony",
+    "Music",
+    "Search",
+    "Messaging",
+    "Bookmarks",
+    "Tools",
+    "Widgets",
+    "Enterprise",
+    "Storage",
+    "Reference",
+    "Advertising",
+    "Content",
+    "Cloud",
+    "Recommendations",
+    "Analytics",
+    "Events",
+    "Jobs",
+    "Translation",
+    "Calendars",
+    "Travel"
+];
 
   constructor(public dialog: MdDialog,private apiDetails:apiService) {
     this.stateCtrl = new FormControl();
@@ -27,10 +54,7 @@ export class HomepageComponent {
         .map(name => this.filterApis(name));
     this.apiDetails.getApiList().subscribe(apis => this.apis=apis);
      this.apiDetails.getAllApis().subscribe(apis => {this.allapis=apis;
-        
-       this.apiList.push(apis[0].Category);
-       
-       console.log(apis[0])});
+  });
   }
 
   openDialog(api) {
@@ -45,6 +69,26 @@ export class HomepageComponent {
     return val ? this.apiList.filter(s => new RegExp(`^${val}`, 'gi').test(s))
                : this.apiList;
   }
+
+  renderResults(api){
+    console.log(api);
+    var allApiTr= <HTMLElement[]><any>document.querySelectorAll(".all-api-tr");
+  console.log(allApiTr[0].childNodes[5].textContent);
+  for(let i in allApiTr){
+    if(allApiTr[i].childNodes[5].textContent == api){
+      this.displayFlag=true;
+      // console.log(allApiTr[i]);
+      allApiTr[i].style.display="block";
+      allApiTr[i].style.minWidth="134px";
+      //  allApiTr[i].style.minHeight="37px";
+    }
+    else{
+        allApiTr[i].style.display="none";
+    }
+  }
+ 
+  }
+ 
 }
 interface api{
   id:number,

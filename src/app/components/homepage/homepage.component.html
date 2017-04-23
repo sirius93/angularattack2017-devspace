@@ -1,16 +1,16 @@
-<div class="container-fluid custom-block">
-  <div class="row">
+<div class="container-fluid">
+  <div  class="row">
     <div class="col-xs-12 toolbar">
       <md-toolbar color="primary">
         <div class="logo">
-          < <amp-dash [typeText]="'DEV SPACE'" [typeLoop]="true" class="app-title"></amp-dash>>
+          < <amp-dash [typeText]="'DEV SPACE'" [typeLoop]="true"></amp-dash>>
         </div>
         <md-input-container class="search-container">
-          <input mdInput placeholder="Search APIs" [formControl]="stateCtrl" [mdAutocomplete]="auto" class="search-input">
+          <input mdInput placeholder="Search APIs by category" [formControl]="stateCtrl" [mdAutocomplete]="auto" class="search-input">
         </md-input-container>
 
         <md-autocomplete #auto="mdAutocomplete">
-          <md-option *ngFor="let api of filteredApis | async" [value]="api">
+          <md-option *ngFor="let api of filteredApis | async" [value]="api" (click)="renderResults(api)">
             {{ api }}
           </md-option>
         </md-autocomplete>
@@ -18,8 +18,9 @@
     </div>
   </div>
 
-  <div class="row main-content">
+  <div  class="row main-content">
     <div class="col-xs-10 col-xs-offset-1">
+      <div *ngIf="!displayFlag">
       <h1>
         Most popular APIs
       </h1>
@@ -39,20 +40,22 @@
           </tr>
         </tbody>
       </table>
+      </div>
+      <div>
       <h1>
         All APIs
       </h1>
       <table class="all-api-table">
-        <thead>
+        <!--<thead>
           <tr class="table-heading">
             <td>Api name</td>
             <td>Description</td>
             <td>Category</td>
             <td>Submission Date</td>
           </tr>
-        </thead>
-        <tbody>
-          <tr class="table-rows" *ngFor="let apiindex of allapis;let i =index">
+        </thead>-->
+        <tbody >
+          <tr class="table-rows all-api-tr"  *ngFor="let apiindex of allapis;let i =index">
             <td>{{apiindex.APIname}}</td>
             <td> {{apiindex.Description}}</td>
             <td>{{apiindex.Category}}</td>
@@ -60,6 +63,8 @@
           </tr>
         </tbody>
       </table>
+      </div>
     </div>
   </div>
+  
 </div>
