@@ -9,9 +9,9 @@ import 'rxjs/add/operator/startWith';
 })
 export class HomepageComponent {
   stateCtrl: FormControl;
-  filteredStates: any;
+  filteredApis: any;
 
-  states = [
+  apis = [
     'Alabama',
     'Alaska',
     'Arizona',
@@ -66,13 +66,13 @@ export class HomepageComponent {
 
   constructor() {
     this.stateCtrl = new FormControl();
-    this.filteredStates = this.stateCtrl.valueChanges
+    this.filteredApis = this.stateCtrl.valueChanges
         .startWith(null)
         .map(name => this.filterStates(name));
   }
 
   filterStates(val: string) {
-    return val ? this.states.filter(s => new RegExp(`^${val}`, 'gi').test(s))
-               : this.states;
+    return val ? this.apis.filter(s => new RegExp(`^${val}`, 'gi').test(s))
+               : this.apis;
   }
 }
