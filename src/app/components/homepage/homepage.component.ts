@@ -8,12 +8,12 @@ import 'rxjs/add/operator/startWith';
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
-  styleUrls: ['./homepage.component.scss'],
-  providers: [apiService],
+  styleUrls: ['./homepage.component.scss']
+  // providers: [apiService],
   
 })
 export class HomepageComponent {
-  apis:api[];
+  // apis:api[];  
   stateCtrl: FormControl;
   filteredApis: any;
  selectedOption:any;

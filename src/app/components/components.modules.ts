@@ -29,7 +29,7 @@ import { AmpDashModule } from 'amp-dash';
 
   exports:[landingPageComponent,HomepageComponent,apiDetailsComponent],
   entryComponents: [apiDetailsComponent],
-  // providers: [apiService],
+  providers: [apiService],
   bootstrap: []
 })
 export class ComponentsModule { }

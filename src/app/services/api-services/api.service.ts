@@ -17,10 +17,10 @@ export class apiService {
     }
     setApiDetails(api:Object){
         this.api=api;
-        console.log(this.api);
-    }
-    getApiDetails():Promise<any>{
         // console.log(this.api);
-        return Promise.resolve(this.api);
+    }
+    getApiDetails(){
+        // console.log(this.api);
+        return this.api;
     }
 }
