@@ -16,5 +16,8 @@ constructor(private router:Router){
 nav(){
   this.router.navigate(['/homepage']);
 }
+directtosso(){
+      window.location.href = "http://localhost:5000/googlelogin";
+    }
 
 }

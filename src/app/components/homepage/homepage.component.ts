@@ -14,6 +14,9 @@ import 'rxjs/add/operator/startWith';
 })
 export class HomepageComponent {
   apis:api[];
+  userName:string;
+  userEmail:string;
+  userImage:string;
   allapis:any;
   stateCtrl: FormControl;
   filteredApis: any;
@@ -25,9 +28,16 @@ export class HomepageComponent {
     this.filteredApis = this.stateCtrl.valueChanges
         .startWith(null)
         .map(name => this.filterApis(name));
+    this.apiDetails.getUserData().subscribe(user =>{
+      this.userEmail=user.emails[0];
+      this.userName=user.name.givenName+" "+user.name.familyName;
+      this.userImage=user.image.url;
+      console.log(this.userImage);
+    })
     this.apiDetails.getApiList().subscribe(apis => this.apis=apis);
      this.apiDetails.getAllApis().subscribe(apis => {this.allapis=apis;
-        
+       
+ 
        this.apiList.push(apis[0].Category);
        
        console.log(apis[0])});
