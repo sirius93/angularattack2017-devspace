@@ -5,13 +5,16 @@ import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { landingPageComponent } from './landing page/landing-page.component';
 import { HomepageComponent } from './homepage/homepage.component';
-import { RouterModule } from '@angular/router';
+import {apiDetailsComponent} from './api-details-modal/api-details-modal.component'
+import {apiService} from '../services/api-services/api.service'
+import {RouterModule} from '@angular/router';
 import { AmpDashModule } from 'amp-dash';
 
 @NgModule({
   declarations: [
-    landingPageComponent,
-    HomepageComponent
+      landingPageComponent,
+      HomepageComponent,
+      apiDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -23,8 +26,10 @@ import { AmpDashModule } from 'amp-dash';
     
   ],
 
-  exports: [landingPageComponent, HomepageComponent],
-  providers: [],
+
+  exports:[landingPageComponent,HomepageComponent,apiDetailsComponent],
+  entryComponents: [apiDetailsComponent],
+  // providers: [apiService],
   bootstrap: []
 })
 export class ComponentsModule { }

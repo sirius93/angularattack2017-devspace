@@ -1,16 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl,ReactiveFormsModule} from '@angular/forms';
+import {apiDetailsComponent} from '../api-details-modal/api-details-modal.component'
+import {apiService} from '../../services/api-services/api.service'
+import {MdDialog, MdDialogRef} from '@angular/material';
 import 'rxjs/add/operator/startWith';
 
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
-  styleUrls: ['./homepage.component.scss']
+  styleUrls: ['./homepage.component.scss'],
+  providers: [apiService],
+  
 })
 export class HomepageComponent {
+  apis:api[];
   stateCtrl: FormControl;
   filteredApis: any;
-
+ selectedOption:any;
   apis = [
     'Alabama',
     'Alaska',
@@ -64,15 +70,30 @@ export class HomepageComponent {
     'Wyoming',
   ];
 
-  constructor() {
+  constructor(public dialog: MdDialog,private apiDetails:apiService) {
     this.stateCtrl = new FormControl();
     this.filteredApis = this.stateCtrl.valueChanges
         .startWith(null)
         .map(name => this.filterStates(name));
+    this.apiDetails.getApiList().subscribe(apis => this.apis=apis)
+  }
+
+  openDialog(api) {
+    let dialogRef = this.dialog.open(apiDetailsComponent);
+    this.apiDetails.setApiDetails(api);
+    dialogRef.afterClosed().subscribe(result => {
+      this.selectedOption = result;
+    });
   }
 
   filterStates(val: string) {
     return val ? this.apis.filter(s => new RegExp(`^${val}`, 'gi').test(s))
                : this.apis;
   }
+}
+interface api{
+  id:number,
+  API:string,
+  Description:string,
+  tags:string[]
 }

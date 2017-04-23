@@ -18,9 +18,12 @@
     </div>
   </div>
   <div class="row">
+
     <div class="col-xs-8 col-xs-offset-2">
       Most popular apis
-      
+      <ul class="api-list">
+      <li *ngFor="let api of apis;let i =index" (click)="openDialog(api)">{{api.API}}</li>
+    </ul>
     </div>
   </div>
 </div>
